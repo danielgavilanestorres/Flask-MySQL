@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Usuario</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/bootstrap.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header"></div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Insertar Nuevo Usuario</h5>
+        </div>
+        <a href="/usuarios" style="text-align: right;">Regresar</a>
+        <form action="/crear/usuario" method="POST">
+            <p></p>
+            <p for="fnombre" class="card-text">Nombre: </p>
+            <input type="text" name="fnombre">
+            <p>
+            <p for="fapellido" class="card-text">Apellido: </p>
+            <input type="text" name="fapellido">
+            <p></p>
+            <p for="fcorreo" class="card-text">Correo: </p>
+            <input type="text" name="fcorreo" id="">
+            <p></p>
+            <input type="submit" value="Crear Usuario">
+        </form>
+    </div>
+</body>
+
+</html>

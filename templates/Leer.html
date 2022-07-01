@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/bootstrap.css') }}">
+</head>
+
+<body>
+    <div class="container" style="margin-top: 30px;">
+        <h1>Usuarios</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombres y Apellidos</th>
+                    <th>Correo Electronico</th>
+                    <th>Fecha Creacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in listaUsuarios %}
+                <tr>
+                    <td>{{ usuario.id }}</td>
+                    <td>{{ usuario.nombre }} {{ usuario.apellido }}</td>
+                    <td>{{ usuario.correo }}</td>
+                    <td>{{ usuario.fechaCreacion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <a href="/nuevo/usuario" class="btn btn-secondary my-2">Crear Usuario</a>
+    </div>
+
+</body>
+
+</html>
