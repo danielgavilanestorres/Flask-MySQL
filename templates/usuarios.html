@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>usuarios</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/bootstrap.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card" style="width: 70rem;">
+            <div class="card-body">
+                <h5 class="card-title">Usuarios</h5>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre y Apellido</th>
+                            <th>Correo Electronico</th>
+                            <th>Fecha de Creación</th>
+                            <th>Operaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for usuario in listaUsuarios %}
+                            <tr>
+                                <th>{{ usuario.id }}</th>
+                                <td>{{ usuario.nombre }} {{ usuario.apellido }}</td>
+                                <td>{{ usuario.correo }} </td>
+                                <td>{{ usuario.fechaCreacion }} </td>
+                                <th>
+                                    <a href="/mostrar/usuario/{{ usuario.id }}">Mostrar</a>
+                                    <label>|</label>
+                                    <a href="/editar/usuario/{{ usuario.id }}">Editar</a>
+                                    <label>|</label>
+                                    <a href="/eliminar/usuario/{{ usuario.id }}">Eliminar</a>
+                                </th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="/nuevo/usuario" class="btn btn-primary">Nuevo Usuario</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Usuario</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/bootstrap.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card" style="width: 70rem;">
+            <div class="card-body">
+                <h5 class="card-title">Crear - Nuevo Usuario</h5>
+                <div class="mb-3" style="text-align: right;">
+                    <a href="/usuarios" class="btn btn-primary">Inicio</a>
+                </div>
+                <form action="/crearUsuario" method="post">
+                    <div class="mb-3">
+                        <label for="fname" class="form-label">Nombre: </label>
+                        <input type="text" name="fnombre" id="" class="form-control" style="width: 300px;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fapellido" class="form-label">Apellido: </label>
+                        <input type="text" name="fapellido" id="" class="form-control" style="width: 300px;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fcorreo" class="form-label">Correo: </label>
+                        <input type="text" name="fcorreo" id="" class="form-control" style="width: 300px;">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+
+</html>
