@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar un Usuario</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/bootstrap.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card" style="width: 70rem;">
+            <div class="card-body">
+                <h5>Usuario {{ usuario.id }}</h5>
+                <div class="mb-3" style="text-align: right;">
+                    <a href="/usuarios" class="btn btn-primary">Inicio</a>
+                </div>
+                <div class="mb-3">
+                    <label for="fname" class="form-label">Nombre: {{ usuario.nombre }}</label>
+                    <br>
+                    <label for="fname" class="form-label">Apellido: {{ usuario.apellido }}</label>
+                    <br>
+                    <label for="fname" class="form-label">Correo Electrónico: {{ usuario.correo }} </label>
+                    <br>
+                    <label for="fname" class="form-label">Fecha Creación: {{ usuario.fechaCreacion }}</label>
+                    <br>
+                    <label for="fname" class="form-label">Fecha Actualización: {{ usuario.fechaActualizacion }}</label>
+                    <br>
+                </div>
+                <a href="/editar/usuario/{{ usuario.id }}">Editar</a>
+                <label>|</label>
+                <a href="/eliminar/usuario/{{ usuario.id }}">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
