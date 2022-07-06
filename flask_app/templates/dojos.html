@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojos</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/bootstrap.css') }}">
+</head>
+
+<body>
+    <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">Nuevo Dojo</div>
+                    <div class="card-body">
+                        <form action="/nuevoDojo" method="post">
+                            <label for="nombre" class="form-label">Nombre: </label>
+                            <input type="text" name="nombre" class="form-control" style="width: 200px; margin-left: 10px;" value="">
+                            <br>
+                            <input type="submit" value="Guardar">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <form action="/process_money" method="post">
+                        <div class="card-header">Dojos</div>
+                        <div class="card-body">
+                            {% for dojo in listaDojos %}
+                                <p>
+                                    <a name="dojo_id" href="/dojos/{{dojo.id}}"><td>{{ dojo.nombre }}</td></a>
+                                </p>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <form action="/nuevoNinja">
+            <input type="submit" value="Nuevo Ninja">
+        </form>
+    </div>
+</body>
+
+</html>
