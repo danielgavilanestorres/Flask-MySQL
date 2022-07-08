@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amistades</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/bootstrap.css') }}">
+</head>
+<body>
+    <div class="container" style="margin-top: 30px;">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">Amistades</div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Amigo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ua in amigos.amigos %}
+                                <tr>
+                                    <td>{{ ua.nombre }} {{ ua.apellido }}</td>
+                                    <td>{{ ua.nombreAmigo }} {{ ua.apellidoAmigo }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">Añadir Usuario</div>
+                    <div class="card-body">
+                        <form action="/crearUsuario" method="post">
+                            <label for="nombre" class="form-label">Nombre: </label>
+                            <input type="text" name="nombre" class="form-control" style="width: 200px; margin-left: 10px;" value="">
+                            <br>
+                            <label for="apellido" class="form-label">Apellido: </label>
+                            <input type="text" name="apellido" class="form-control" style="width: 200px; margin-left: 10px;" value="">
+                            <br>
+                            <input type="submit" value="Añadir Usuario">
+                        </form>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 30px;">
+                    <div class="card-header">Crear Amistad</div>
+                    <div class="card-body">
+                        <form action="/crearAmistad" method="post">
+                            <div class="mb-3"> 
+                                <label for="">Usuario: </label>
+                                <select name="usuarioId" id="">
+                                    {% for usuario in listaUsuarios %}
+                                        <option value="{{ usuario.id }}">{{ usuario.nombre }} {{ usuario.apellido }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="">Amigo: </label>
+                                <select name="amigoId" id="">
+                                    {% for amigo in listaAmigos %}
+                                        <option value="{{ amigo.id }}">{{ amigo.nombre }} {{ amigo.apellido }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <input type="submit" value="Crear">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
