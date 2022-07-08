@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/bootstrap.css') }}">
+</head>
+<body>
+    <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">Nuevo Libro</div>
+                    <div class="card-body">
+                        <!-- Crear Nuevo Libro -->
+                        <form action="/crearLibro" method="post">
+                            <label for="ftitulo" class="form-label">Titulo: </label>
+                            <input type="text" name="ftitulo" class="form-control" style="width: 200px; margin-left: 10px;" value="">
+                            <br>
+                            <label for="fnumPaginas" class="form-label">Núm. Páginas: </label>
+                            <input type="text" name="fnumPaginas" class="form-control" style="width: 200px; margin-left: 10px;" value="">
+                            <br>
+                            <input type="submit" value="Crear">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <!-- Todos los Libros -->
+                    <form>
+                        <div class="card-header">Libros</div>
+                        <div class="card-body">
+                            {% for libro in listaLibros %}
+                                <p>
+                                    <a name="idLibro" href="/libro/{{ libro.idLibro }}"><td>{{ libro.titulo }}</td></a>
+                                </p>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 30px; text-align: right;">
+            <form action="/autores" >
+                <input type="submit" value="Inicio">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

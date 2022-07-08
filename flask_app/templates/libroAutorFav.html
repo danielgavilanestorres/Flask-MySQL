@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/bootstrap.css') }}">
+</head>
+<body>
+    <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header"><span style="font-weight: bold; font-size: 1.5rem;">Titulo: {{ libro.titulo }}</span></div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Favoritos por: </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for autor in libro.favoritosAutor %}
+                                <tr>
+                                    <td>{{ autor.nombre }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <!-- Todos los Autores -->
+                    <div class="card-header"><span style="font-weight: bold; font-size: 1.5rem;">Añadir a: {{ libro.titulo }} </span>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <form action="/anadirAutor" method="post">
+                                <input type="hidden" name="libroId" value="{{ libro.idLibro }}">
+                                <div class="mb-3">
+                                    <label for="">Autores: </label>
+                                    <select name="autorId" id="">
+                                        {% for autor in listaAutores %}
+                                            <option value="{{ autor.idAutor }}">{{ autor.nombre }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="submit" value="Añadir">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 30px; text-align: right;">
+            <form action="/autores" >
+                <input type="submit" value="Inicio">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
